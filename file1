@@ -17,3 +17,33 @@ Types of data models:
 Relational: Conceptual Simplicity(Structural independence) provides ad hoc queries 
 No SQl(Big data): Addressing Big Data problems, Based on schema-less key-value pair data model, best suited for large sparse data stores.
                   A mechanism for storage and retrieval of unstructured data models by means other than tabular relations in relational DB.
+
+
+Relational Vs Transactional Model:
+Relational: Easy Quering, Data manipulation in easy and intuitive way.
+Transactional: Opeartional DB, - ex- claim for healthcare app. Data from transactional can be moved to relational to fetch useful information.
+
+Data Model Building blocks:
+
+Entity: Person, place, thing that it distinguishable, unique and distinct
+Attribute: A characterstic of entity
+Relationship: 1-1(manager of store), 1-many(customer with many invoices),many-many(student to class)
+
+To undestand relationship we use ER Diagram:
+
+ER Model is composed of entity types and specifies the relationships that can exist between instances of those entity types.
+it:
+  Shows relationship
+  business process
+  represenyted visually
+  show links(primary keys)
+  
+ These are related by :
+ Primary Key: Column(s) uniquely identify every row in table
+ Foreign Key:one or more columns that can be used to identify a single row in a table
+ 
+ To understand the relationships between these table we have below notations:
+ Chen Notation: 
+ Crow's Foot Notation:
+ UML class diagram notation:
+ (Please find ER Diagram Notation picture)
