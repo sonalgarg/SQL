@@ -1,0 +1,97 @@
+Select Statement:
+  What you want to select and from where you want to get it.
+    select prod_name
+      ,prod_price
+      ,prod_Id
+    from Products;
+
+    Select * from Products;
+
+Limit(SQLLite, MYSQL):# of records to fetch
+ROWNUM(Oracle): where ROWNUM<=5;
+
+      select prod_name from Products LIMIT 5;
+      select prod_name from Producst LIMIT 100,10; ' this will display 101-110
+
+Why Tables:
+
+Use tables to make models and Predictions
+Create Dashboards
+Visualize data with other tools
+Extract Data from other resources
+
+Note: NUll Value is nt empty String.
+Primary key can't be NULL.
+
+Statement:
+Create table shoes
+(
+Id chare(10) PRIMARY KEY,
+Brand char(10) NOT NULL,
+Type chare(250) NOT NULL,
+Color chare(250) NOT NULL,
+Price decimal(8,2) Not NULL,
+Desc Varchar(750) NULL
+);
+
+
+Insert Statement:
+
+Insert into Shoes 
+Values ('12322'
+        ,'Gucci'
+        ,'slippers'
+        ,'brown'
+        ,'123.43'
+        ,NUll
+        );
+        
+OR
+(Recommended)
+Insert into Shoes 
+                (
+                  Id,
+                  Brand,
+                  Type,
+                  Color,
+                  Price,
+                  Desc
+                  )
+               Values
+                  (
+                    '313'
+                    ,'Gucci'
+                    ,'shoes'
+                    ,'Orange'
+                    ,'221.33'
+                    ,NULL
+                    );
+
+Creating Temp Tables:
+> Used for only a session and will distroy after that
+> Faster
+> Simplify complex queries
+
+
+Create temporary table sandals as 
+(
+    Select *
+    From shoes
+    where shoes_type='Sandals'
+);
+
+
+Adding comments:
+Single line comment: 
+                    select  shoe_id
+                    --,brand_id
+                    ,shoes_name
+                    from shoes;
+                    
+MultiLine Comment:
+
+                    select shoe_id
+                    /*,brand_id
+                    ,shoees_name
+                    */
+                    from shoes;
