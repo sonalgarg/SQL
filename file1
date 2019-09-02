@@ -1,0 +1,19 @@
+SQL is structured Query language
+It is used for relational db
+Primary ways to use SQl: query, insert, update and modify data
+SQL statements are descriptive
+really easy to understand
+non-procedural language- can't write while application with it
+Data sciencetist is end user and uses sql to retrive data from database
+We will use sqllite- Sqlite is embeddable relational database management system. SQL is query language. ... Unlike other databases (like SQL Server and MySQL) SQLite does not support stored procedures. SQLite is file-based, unlike other databases, like SQL Server and MySQL which are server-based
+
+
+Data Modeling:
+Organise and Structure information into multiple related tables
+Represents a business process and shows relatonship between business process.
+It represents real world using data
+
+Types of data models:
+Relational: Conceptual Simplicity(Structural independence) provides ad hoc queries 
+No SQl(Big data): Addressing Big Data problems, Based on schema-less key-value pair data model, best suited for large sparse data stores.
+                  A mechanism for storage and retrieval of unstructured data models by means other than tabular relations in relational DB.
