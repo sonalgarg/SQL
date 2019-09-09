@@ -1,0 +1,66 @@
+Aggregate functions provides various ways to summaries your data.
+Find Highest, lowest, total num or rows and average values.
+
+AVG(), Coun(),MIN(),MAX(),SUM()
+
+Select AVG(UnitPrice) as avg_price from products;
+Null rows will be ignored.
+
+Count(*)- counts all the rows in a table containing values or NULL values
+Select count(*) as total_customers From Customers;
+
+Count(column)- Counts all the rows in a specific column ignorin NULL values
+Select Count(CustomerID) as total_customers from Customers;
+
+select MAX(UnitPrice) as max_prod_price from products
+select Max(unitPrice) as Max_prod_price, MIN(UnitPrice) As min_prod_price from Products
+
+SUM aggregate Function
+'
+Select SUM(unitPrice) as total_prod_price from Products
+Select SUM(UnitPrice*UnitInStock) As total_Price from products where SupplierID=23;
+
+DISTINCT: if DISTIC+NCT is not specified, All is assumed.
+Cannot use DISTINCT on COunt(*)
+No value to use with MIN and MAX functions
+
+Select COUNT(DISTNCT CustomerID) From Customer;
+
+
+Grouping Data with SQL:
+Counts customers after group on region rather than counting the whole tabe
+
+Select Region, Count(CustomerID) As total_customers from Customers Group By Region;
+
+Group by clauses can contain multiple columns
+Every column in your Select statement must be present in a GROUP BY clause, except for aggregated claculations
+
+Nulls will be grouped together if your GROUP BY column contains NULLs.
+
+Having clause- Filtering for groups
+Where does not work for groups.
+where filters on rows
+Instead use HAVING clause to filter for groups.
+
+
+Select
+CutomerID
+,count(*) As orders 
+from Orders
+Group By CustomerID
+Having Count(*)>=2;
+
+Where vs Having
+Where filters before data is grouped
+Having filters after data is grouped
+Rows eliminated by the where clause will not be a included in the group.
+
+
+Order BY with group by
+Order by sorts data
+group by does not sort data
+select SupplierID, count(*) As Num_prod
+From Products
+Where UnitPrice>=4
+Group By SupplierID
+Having Count(*0>=2;
