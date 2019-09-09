@@ -1,0 +1,34 @@
+To sort data in a particular order:
+
+Use Order By class
+Helpful in viewing and interpret data
+
+Select something from database Order By Characterstics;
+
+Rules:
+Takes the name of one or more columns
+Add a comma after each additional column name
+Can sort by a  column not retrieved
+Must always be the last clause in a select statement
+
+order By 2,3;  #this is 2 and 3 column
+
+DESC- descending order
+ASC - ascending order
+Only applies to column names it directly precedes
+
+Math Operations:
++(Addition),-(Subtraction) ,*(Multiplication) ,/(Division)
+
+Select 
+ProdID
+,UnitPrice
+,UnitsOnOrder * UnitPrice As Total_Order_Cost 
+From Products;
+
+Order of Operations
+Parentheses, Exponents, Multiplication, Division,Addition, Subytarction
+(Please execuse my dear aunt sally)
+
+Select ProdID, Quantity, UnitPrice,Discount,
+(UnitPrice-Discount)/Quantity As Total_Cost from OrderDetails;
