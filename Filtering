@@ -1,0 +1,60 @@
+Filtering in sql can be done to retrieve any specific record.
+It increase speed.
+
+Where clause is used for this purpose, along with various operators:
+>,<,=,<>,BETWEEN, IS NULL,etc
+
+Select prod_name, quantity from Products where price <25;
+select prod_name, quantity from Products where price BETWEEN 20 And 30;
+
+Advanced filtering Techniques:
+IN , OR, NOT
+
+IN: Specifies range of condition. Similar to between. Enclosed in (), Comma delimiter us used to seprate values in list
+
+Select ProductID
+,unitPrice
+,supplierID
+From Products 
+Where SupplierD IN (9,10,18);
+
+
+OR Operator: Check first condition and if that satisfies it will not check next cndition
+
+Select ProductName
+,ProdID
+,UnitPrice
+,ProdName
+From Products
+Where productName='Tofu' OR 'Konbu';
+
+IN is faster than OR
+IN can have subqueries via SELECT
+IN can have multiple options inside ()
+IN Don't have to worry about order with IN
+
+
+OR with AND: AND processes before OR. So use ()
+
+Select ProdID
+,UnitPrice
+,SupplierID
+From Products 
+Where SupplierID= 9 OR 
+SupplierID=12
+And UnitPrice>15;
+
+Select ProdID
+,UnitPrice
+,SupplierID
+From Products 
+Where (SupplierID= 9 OR 
+SupplierID=12)
+And UnitPrice>15;
+
+Not Operator:
+
+Select *
+From Employees
+Where Not City='London' And 
+Not City='Seattle';
