@@ -1,0 +1,21 @@
+Special character used to match parts of a value
+Search patter made from litera text, wildcard character, or a combination
+Can only be used with strings not with numerical data
+uses LIKE as an operator(though technically a predicate)
+
+
+% Wildcards: before, after, before after, middle of two letters('S%L' , 's%@gmail.com')
+%wildcards will not match null value
+
+Underscore(_) Wildcard: Matchs a single character. Is not supported by DB2
+Where size like '_pizza'
+Output: spizza, mpizza
+
+Bracket[] Wildcars: Used to specify a set of characters in a specific location
+Does work with sqllite.
+
+Downsides of wildcards:
+Takes longer to run.
+Better to use another operator(if possible): =,<,=>, and etc.
+Statements with wildcards will take longer to run if used at the end of search patters
+Placement of wildcards is important.
