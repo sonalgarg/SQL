@@ -1,0 +1,23 @@
+Subqeries: Queries embedded into other queries.
+Relational databases staore data in multiple tables
+Subqueries merge data from multiple sources together.
+Helps with adding other filtering criteria.
+
+Always perform the innermost Select portion first.
+
+DBMS is performing two operations:
+1. Getting the order numbers for the product selected.
+2. Adding that to the WHERE clause and processing the overall SELECT statement
+
+Select CustomerID
+,CompanyName
+,Region
+From Customers 
+Where customerID IN 
+(
+Select CustomerID 
+From Orders 
+Where Freight>100
+);
+
+Subquery Best Practices and considerations
