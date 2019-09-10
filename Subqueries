@@ -21,3 +21,31 @@ Where Freight>100
 );
 
 Subquery Best Practices and considerations
+There is no limit to the number of subqueries yu can have
+Performance slows when you nest too deeply
+subquery selects can only retrieve a single column
+
+Subquery in subquery:
+Select customer_name, Customer_contact 
+From cust_id In                             -- customer information for those customer Ids
+  Select customer_id
+  From Orders                                  -- Customer ID fro those order numbers
+  Where order_number IN( Select order_number   --Order number from OrderItems
+      From orderItems
+        Where prod_name='Toothbrush');
+        
+-- WWW.PoorSQl.com  Website to indent sql
+
+Subqueries for calculations:
+Select Count(*) As orders 
+From Orders
+Where customer_id='675w32';
+
+Select customer_name
+        ,customer_state
+         (Select count(*) As orders
+         From Orders
+         Where Orders.customer_id=
+ Customer.customer_id) As Orders
+ From customers
+ Order By Customer_name;
