@@ -1,0 +1,56 @@
+What is a Union?
+---------------------------------------
+
+The Union operator is used to combine the result-set of two or more Select statements.
+Each Select statement within Union must have the same number of columns
+Columns must have similar data types
+The columsn must be in same order
+
+Example:
+-----------------------
+
+Query1: 
+Select clumn_name(s) From
+able1
+UNION
+Select column_name(s) From
+table2;
+
+Query2: Which German cities have suppliers
+
+Select City, Country From 
+Customers
+Where Country='Germany'
+Union
+Select City, Country From
+Suppliers
+Where Country=''Germany
+Order By City;
+UNION puts lines from queries after each other, while JOIN makes a cartesian product and subsets it -- completely different operations. Trivial example of UNION:
+
+
+Difference between join and union:
+--------------------------------------
+mysql> SELECT 23 AS bah
+    -> UNION
+    -> SELECT 45 AS bah;
++-----+
+| bah |
++-----+
+|  23 | 
+|  45 | 
++-----+
+2 rows in set (0.00 sec)
+similary trivial example of JOIN:
+
+mysql> SELECT * FROM 
+    -> (SELECT 23 AS bah) AS foo 
+    -> JOIN 
+    -> (SELECT 45 AS bah) AS bar
+    -> ON (33=33);
++-----+-----+
+| foo | bar |
++-----+-----+
+|  23 |  45 | 
++-----+-----+
+1 row in set (0.01 sec)
