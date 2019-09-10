@@ -1,0 +1,149 @@
+Joining Tables: An Introduction
+Combining data from multiple tables together
+
+Benefits of Breaking data into Tables
+Efficient storage
+Easier manipulation
+Greater scalability
+Logically models a process
+Tables are releated through common values(keys)
+
+Joins
+Associate correct records from each table on the fly
+Allows dat retrieval from multiple tables in one query
+Joins are not physical- they persist for the duration of the query execution.
+
+Types of Joins:
+Cartesian (Cross) Joins: A Catesian joins take each record from first table and match it with all the
+rows from the second table, therefore , if the first table contains x rows and the second table contains y rows, you will have
+the end result of x multiplied by y.
+
+limitations:
+Not frequntly used
+Computationally taxing 
+Will retrun producst with the incorrect vendor or vendor at all
+
+Select product_name
+, unit_price
+,company_name
+From suppliers CROSS JOINS products;
+Note: Please find attached snapshots for mre clear picture of cross/Cartesian Joins.
+
+
+Inner Joins: Selects records that have matching values in both tables.
+
+
+Select suppliers.CompanyName
+,ProductName
+,UnitPrice
+From Suppliers INNER JOIN Products
+On Suppliers.supplierid=
+Products.supplierid;
+
+Inner Join Syntax
+Join Type is specified
+Join condition is in the From clause and uses the ON clause
+Joining more tables together affects overall database performance
+You can join multiple tables, no limit
+List all the tables, then define conditions
+
+
+Inner Join with multiple tables
+Select o.OrderID, c.CompanyName,e.LastName --prequalified column name
+From ((Orders o Inner Join Customers c ON 
+o.customerID=c.customerID) 
+Inner Join Employee e ON o.EmployeeID=e.EmployeeID);
+
+Best Practices with Joins
+Make sure you are pr-qualifying names
+Do not make unnecessary joins
+Think about the type of join you are making
+How are you connecting data?
+
+
+Aliases and Self Joins
+SQl aliases gives a table or a column a temporary name
+Make column names more readable
+An alias only exists for the duration of the query
+
+Select column_name 
+From table_name As alias_name;
+
+
+Query Example Using Alias
+
+--Without Alias
+
+Select vendor_name
+,prduct_name
+,product_price
+From Vendors, Products
+Where Vendor.verndor_id=Products.vendor_id;
+
+--using Alias
+
+Select vendor_name
+,prduct_name
+,product_price
+From Vendors As v, Products As p
+Where v.verndor_id=p.vendor_id;
+
+Self Joins
+----------------------------------
+Match cutomers from the same city
+Take the table and treat it like two separate tables
+Join the original table to itself
+
+syntax
+-----------------------------------
+Select column_name(s)
+From table1 T1, table2 T2
+where condition;
+
+example:The following SQl statement matches customers that are from the same city:
+----------------------------------------------
+Select A.CustomerName As CustomerName1
+,B.customerName As CustomerName2
+,A.city
+From Customer A, Customer B
+Where A.Customer=B.CustomerID
+And A.city=B.city
+order By A.city;
+
+Advanced Joins(Left, Right, Outer)
+Left Join: Returns all records from the left table (table1) , and the matched records from the right table(table2)
+The result is NULL from the right side, if there is no match
+
+Select C.customerName,O.orderID
+From Customer C
+Left Join Order O on C.customerID=O.CustomerID
+Order By C.customerName;
+
+Right Join: Returns all records from the right table(table2), and the matched records from left table(tabel1)
+The result is NULL from the left side, when there is no match.
+
+Select Orders.OrderID,
+Employees.LastName,
+Employees.FirstName
+
+From Orders
+
+Right Join Employee 
+On Orders.EmployeeID=Employee.EmployeeID
+Order By Orders.OrderID;
+
+Difference between right and left is the order the tables are relating.
+Left joins can be turned into right joins by reversing the order of the tables.
+
+Full Outer Join
+Return all records when there is a match in either left(table1) or right (tabe2) table records.
+"Give me everything"
+
+-- following statement all cutomers and all teh orders
+Select Customer.CustoerName,
+Orders.OrderID
+From Customers
+
+Full outer Join Orders on
+Customer.CustomerID=Orders.CustomerID
+Order By Customer.CustomerName;
